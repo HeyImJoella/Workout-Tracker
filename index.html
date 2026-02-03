@@ -35,6 +35,7 @@
         <tr><td>Incline Bicep Curl</td><td><input data-key="upperA-biceps-reps" value="2x10"></td><td><input type="number" data-key="upperA-biceps-kg" value="10"></td><td class="desktop-only">Pull</td><td class="desktop-only">Bicep</td></tr>
       </tbody>
     </table>
+    <button class="log-button" onclick="logWorkoutSesssie(this)">Opslaan</button>
   </div>
 </div>
 
@@ -61,6 +62,7 @@
         <tr><td>Decline Sit-Up</td><td><input data-key="legs-abs-reps" value="2x20"></td><td><input type="number" data-key="legs-abs-kg" value="8"></td><td class="desktop-only">Isolation</td><td class="desktop-only">Abs</td></tr>
       </tbody>
     </table>
+   <button class="log-button" onclick="logWorkoutSesssie(this)">Opslaan</button>
   </div>
 </div>
 
@@ -88,58 +90,78 @@
         <tr><td>Incline Hammer Curl</td><td><input data-key="upperB-biceps-reps" value="2x10"></td><td><input type="number" data-key="upperB-biceps-kg" value="8"></td><td class="desktop-only">Pull</td><td class="desktop-only">Bicep</td></tr>
       </tbody>
     </table>
+    <button class="log-button" onclick="logWorkoutSesssie(this)">Opslaan</button>
   </div>
 </div>
 
-<script>
-document.querySelectorAll('input').forEach(input => {
-  const key = input.dataset.key;
-  if (!key) return;
-  const saved = localStorage.getItem(key);
-  if (saved) input.value = saved;
-  input.addEventListener('input', () => localStorage.setItem(key, input.value));
-});
-</script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Mapping van oefeningen naar StrengthLevel URLs (nu direct in kg)
-  const exerciseLinks = {
-    "Bench Press": "https://strengthlevel.com/strength-standards/dumbbell-bench-press/kg",
-    "Pull-Ups": "https://strengthlevel.com/strength-standards/pull-ups/kg",
-    "Chest Supported Row": "https://strengthlevel.com/strength-standards/chest-supported-dumbbell-row/kg",
-    "Incline Fly": "https://strengthlevel.com/strength-standards/incline-dumbbell-fly/kg",
-    "Lateral Raises": "https://strengthlevel.com/strength-standards/lateral-raise/kg",
-    "Overhead Extension": "https://strengthlevel.com/strength-standards/dumbbell-tricep-extension/kg",
-    "Incline Bicep Curl": "https://strengthlevel.com/strength-standards/incline-dumbbell-curl/kg",
-    "Goblet Squat": "https://strengthlevel.com/strength-standards/goblet-squat/kg",
-    "Bulgarian Split Squat": "https://strengthlevel.com/strength-standards/dumbbell-bulgarian-split-squat/kg",
-    "Romanian Deadlift": "https://strengthlevel.com/strength-standards/dumbbell-romanian-deadlift/kg",
-    "Hamstring Curl": "https://strengthlevel.com/strength-standards/hamstring-curl/kg",
-    "Calf Raises": "https://strengthlevel.com/strength-standards/dumbbell-calf-raise/kg",
-    "Decline Sit-Up": "https://strengthlevel.com/strength-standards/decline-sit-up/kg",
-    "Incline Bench Press": "https://strengthlevel.com/strength-standards/incline-dumbbell-press/kg",
-    "Chin-Ups": "https://strengthlevel.com/strength-standards/chin-ups/kg",
-    "Close Grip Press": "https://strengthlevel.com/strength-standards/close-grip-dumbbell-bench-press/kg",
-    "Rear Delt Fly": "https://strengthlevel.com/strength-standards/rear-delt-fly/kg",
-    "Skull Crusher": "https://strengthlevel.com/strength-standards/lying-dumbbell-tricep-extension/kg",
-    "Incline Hammer Curl": "https://strengthlevel.com/strength-standards/hammer-curl/kg"
-  };
+<div class="workout-card history-card">
+  <h2>Mijn Progressie 📈</h2>
+  
+  <div class="filter-dashboard">
+    <div class="filter-group">
+      <label>Oefening</label>
+      <select id="filter-exercise" onchange="renderHistory()"></select>
+    </div>
 
-  // Selecteer alle eerste kolommen (oefeningen) en maak klikbaar
-  document.querySelectorAll('table tbody tr td:first-child').forEach(td => {
-    const exerciseName = td.textContent.trim();
-    if (exerciseLinks[exerciseName]) {
-      td.style.cursor = "pointer";
-      td.style.textDecoration = "underline";
-      td.addEventListener('click', () => {
-        window.open(exerciseLinks[exerciseName], '_blank');
-      });
-      td.title = "Open StrengthLevel (kg)"; // tooltip hint
-    }
-  });
-});
-</script>
+    <div class="filter-group">
+      <label>Maand</label>
+      <select id="filter-month" onchange="renderHistory()">
+        <option value="all">Alle Maanden</option>
+        <option value="0">Januari</option>
+        <option value="1">Februari</option>
+        <option value="2">Maart</option>
+        <option value="3">April</option>
+        <option value="4">Mei</option>
+        <option value="5">Juni</option>
+        <option value="6">Juli</option>
+        <option value="7">Augustus</option>
+        <option value="8">September</option>
+        <option value="9">Oktober</option>
+        <option value="10">November</option>
+        <option value="11">December</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label>Jaar</label>
+      <select id="filter-year" onchange="renderHistory()">
+        <option value="all">Alle Jaren</option>
+        <option value="2026">2026</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+      </select>
+    </div>
+
+    <button onclick="togglePR()" id="pr-button" class="modern-btn">
+    Show Records 🏆
+    </button> 
+  </div>
+
+  <div id="history-content"></div>
+</div>
+
+  <div id="history-content"></div>
+</div>
+
+<div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border);">
+    <button onclick="openDeleteModal()" style="background: none; border: none; color: #777c86; font-size: 13px; cursor: pointer; opacity: 0.7;">
+        🗑️ Wis alle historie
+    </button>
+</div>
+
+<div id="deleteModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <h3>Historie wissen?</h3>
+        <p>Weet je het zeker? Al je opgeslagen trainingen worden definitief verwijderd. Dit kan niet ongedaan worden gemaakt.</p>
+        <div class="modal-buttons">
+            <button onclick="closeDeleteModal()" class="cancel-btn">Annuleren</button>
+            <button onclick="clearAllHistory()" class="confirm-btn">Ja, wis alles</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>

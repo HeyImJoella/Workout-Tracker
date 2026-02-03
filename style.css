@@ -3,8 +3,6 @@
 ========================= */
 :root {
   color-scheme: light dark;
-
-  /* Light - higher contrast */
   --bg-page: #f2f2f4;
   --bg-card: #ffffff;
   --text-main: #18181b;
@@ -40,9 +38,6 @@ body {
   font-size: 16px;
 }
 
-/* =========================
-   TITLES
-========================= */
 h1 {
   font-size: 2rem;
   margin-bottom: 28px;
@@ -61,10 +56,7 @@ h2 {
   backdrop-filter: blur(6px);
 }
 
-/* =========================
-   WORKOUT CARDS
-========================= */
-.workout-card {
+.workout-card, .history-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -74,48 +66,26 @@ h2 {
 }
 
 /* =========================
-   TABLES
+   TABLES (JOUW ORIGINELE STIJL)
 ========================= */
 table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
   font-size: 16px;
-  border: 1px solid var(--border); /* outer table border */
-  border-radius: 12px;             /* rounded corners */
-  overflow: hidden;                /* keep border-radius applied */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-th, td {
-  padding: 8px 16px;
-}
-
-th {
-  font-weight: 600;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-td:first-child,
-th:first-child {
-  text-align: left;
-  width: 50%;
-}
-
-td:not(:first-child),
-th:not(:first-child) {
-  text-align: center;
-  width: 25%;
-}
-
-tbody tr:nth-child(odd) {
-  background: var(--row-alt);
-}
+th, td { padding: 8px 16px; }
+th { font-weight: 600; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+td:first-child, th:first-child { text-align: left; width: 50%; }
+td:not(:first-child), th:not(:first-child) { text-align: center; width: 25%; }
+tbody tr:nth-child(odd) { background: var(--row-alt); }
 
 /* =========================
-   INPUT FIELDS
+   INPUT & BUTTONS
 ========================= */
 input {
   width: 60px;
@@ -126,98 +96,124 @@ input {
   color: var(--text-main);
   font-size: 16px;
   text-align: center;
-  transition: 
-    border 0.2s ease, 
-    box-shadow 0.2s ease, 
-    transform 0.15s ease, 
-    background 0.2s ease;
-  cursor: text;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Hover: slightly lift and highlight border */
-input:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.15);
+.log-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background: #1f6be6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* =========================
+   FILTERS & DROPDOWNS (CORRECTE VOLGORDE)
+========================= */
+.filter-group { display: flex; flex-direction: column; gap: 4px; }
+.filter-group label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+
+.filter-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: flex-end;
+}
+
+/* De algemene stijl voor select en btn */
+.filter-dashboard select, .modern-btn {
+  height: 40px;
   background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-main);
+  font-size: 14px;
 }
 
-/* Focus: clear blue glow */
-input:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
-  background: var(--input-bg);
-}
-
-/* Remove number input arrows */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+/* Specifieke fix voor het pijltje en de padding */
+.filter-dashboard select {
+  appearance: none;
   -webkit-appearance: none;
-  margin: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center; 
+  background-size: 14px;
+  padding: 0 38px 0 12px; /* De 38px zorgt voor de ruimte bij de arrow */
+  cursor: pointer;
 }
-input[type=number] {
-  -moz-appearance: textfield;
+
+.modern-btn { width: 100%; font-weight: 600; cursor: pointer; padding: 0 10px; }
+.modern-btn.active { background: var(--text-main) !important; color: var(--bg-card) !important; }
+
+/* WIS HISTORIE KNOP */
+.tertiary-danger {
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 20px auto 40px auto;
+  display: block;
 }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center; z-index: 1000;
+}
+.modal-content {
+  background: var(--bg-card); padding: 24px; border-radius: 16px; text-align: center; max-width: 300px;
+}
+.modal-buttons { display: flex; gap: 10px; margin-top: 20px; }
+.modal-buttons button { flex: 1; padding: 10px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; }
+.cancel-btn { background: var(--row-alt); color: var(--text-main); }
+.confirm-btn { background: #ef4444; color: white; }
 
 /* =========================
    MOBILE OPTIMIZATION
 ========================= */
 @media (max-width: 480px) {
+  body { font-size: 14px; margin: 0px auto; }
 
-  body {
-    font-size: 14px;
-    margin: 0px auto;
+  .workout-card { 
+    margin: 48px 10px 96px 10px; 
+    padding: 12px 0 16px 0; 
   }
 
-  .workout-card {
-    border-radius: 16px;
-    margin-top: 48px;
-    margin-bottom: 96px;
-    margin-left:10px;
-    margin-right: 10px;
-    padding: 12px 0 16px 0;
+  .history-card {
+    margin: 48px 10px 96px 10px;
+    padding: 16px; 
   }
 
-  h1 {
-    font-size: 1.6rem;
-    margin: 16px 12px;
+  h1 { font-size: 1.6rem; margin: 16px 12px; }
+
+  .workout-card h2 { 
+    font-size: 1.3rem; 
+    padding: 14px 8px; 
+    margin: 0 0 0 0; 
   }
 
-  h2 {
+  .history-card h2 {
     font-size: 1.3rem;
-    padding: 14px 8px;
-      margin: 0 0 0 0;
+    padding: 14px 16px;
+    margin: -16px -16px 16px -16px;
   }
 
-  table {
-    font-size: 14px;
-  }
+  table { font-size: 14px; }
+  th, td { padding: 8px 12px; }
+  input { font-size: 14px; width: 48px; }
+  .desktop-only { display: none; }
 
-  th, td {
-    padding: 8px 12px;
-  }
-
-  input {
-    font-size: 16px; /* voorkomt automatische zoom */
-    width: 48px;
-    padding: 10px;
-  }
-
- .desktop-only {
-    display: none;
-}
-}
-
-/* Desktop centering */
-@media (min-width: 900px) {
-  body {
-    margin: 32px auto;
-    max-width: 1700px;
-  }
-}
-
-input:focus {
-  outline: none;
-  border-color: #3b82f6; /* modern bright blue */
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* soft blue glow */
+  .filter-group label { display: none; }
+  .filter-dashboard { grid-template-columns: 1fr; gap: 10px; }
 }
