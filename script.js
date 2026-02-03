@@ -34,15 +34,16 @@ function checkRepsAndIncreaseKg(inputKg, inputReps) {
     }
 }
 
-<script>
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+// Save & Load ALL fields with data-key
+document.querySelectorAll('input[data-key]').forEach(input => {
+  const key = input.dataset.key;
 
-  // Voeg 'dark' of 'light' class toe aan body
-  document.body.classList.add(prefersDark ? 'dark' : 'light');
+  // Load saved value
+  const saved = localStorage.getItem(key);
+  if (saved !== null) input.value = saved;
 
-  // Optioneel: luister naar veranderingen in systeem
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-    document.body.classList.remove('dark', 'light');
-    document.body.classList.add(e.matches ? 'dark' : 'light');
+  // Save on change
+  input.addEventListener('input', () => {
+    localStorage.setItem(key, input.value);
   });
-</script>
+});
