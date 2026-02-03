@@ -9,61 +9,156 @@
 </head>
 <body>
 
-<!-- Upper A -->
- <div class="mobile-room">
+<div class="workout-card">
   <h2>Upper A</h2>
- </div>
-<table>
-<thead>
-<tr><th>Exercise</th><th>Sets x Reps</th><th>Weight (kg)</th></tr>
-</thead>
-<tbody>
-<tr><td>DB Bench Press</td><td><input data-key="ua-bench-reps" type="text" value="3x8"></td><td><input data-key="ua-bench-kg" type="number" value="14"></td></tr>
-<tr><td>Pull-Ups</td><td><input data-key="ua-pull-reps" type="text" value="3x8"></td><td><input data-key="ua-pull-kg" type="number" placeholder="body"></td></tr>
-<tr><td>Chest-Supported DB Row</td><td><input data-key="ua-row-reps" type="text" value="3x10"></td><td><input data-key="ua-row-kg" type="number" value="12"></td></tr>
-<tr><td>Incline DB Fly</td><td><input data-key="ua-fly-reps" type="text" value="2x10"></td><td><input data-key="ua-fly-kg" type="number" value="10"></td></tr>
-<tr><td>Lateral Raises</td><td><input data-key="ua-lateral-reps" type="text" value="2x10"></td><td><input data-key="ua-lateral-kg" type="number" value="8"></td></tr>
-<tr><td>Single DB Overhead Extension</td><td><input data-key="ua-tri-reps" type="text" value="2x10"></td><td><input data-key="ua-tri-kg" type="number" value="10"></td></tr>
-<tr><td>Incline DB Curl</td><td><input data-key="ua-bi-reps" type="text" value="2x10"></td><td><input data-key="ua-bi-kg" type="number" value="10"></td></tr>
-</tbody>
-</table>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets x Reps</th>
+          <th>Weight (kg)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DB Bench Press</td>
+          <td><input type="text" data-key="upperA-bench-reps" value="3x8"></td>
+          <td><input type="number" data-key="upperA-bench-kg" value="14"></td>
+        </tr>
+        <tr>
+          <td>Pull-Ups</td>
+          <td><input type="text" data-key="upperA-pull-reps" value="3x8"></td>
+          <td><input type="number" data-key="upperA-pull-kg" placeholder="body"></td>
+        </tr>
+        <tr>
+          <td>Chest-Supported DB Row (30°)</td>
+          <td><input type="text" data-key="upperA-row-reps" value="3x10"></td>
+          <td><input type="number" data-key="upperA-row-kg" value="12"></td>
+        </tr>
+        <tr>
+          <td>Incline DB Fly (15–30°)</td>
+          <td><input type="text" data-key="upperA-fly-reps" value="2x10"></td>
+          <td><input type="number" data-key="upperA-fly-kg" value="10"></td>
+        </tr>
+        <tr>
+          <td>Lateral Raises</td>
+          <td><input type="text" data-key="upperA-lateral-reps" value="2x10"></td>
+          <td><input type="number" data-key="upperA-lateral-kg" value="8"></td>
+        </tr>
+        <tr>
+          <td>Single DB Overhead Extension</td>
+          <td><input type="text" data-key="upperA-triceps-reps" value="2x10"></td>
+          <td><input type="number" data-key="upperA-triceps-kg" value="10"></td>
+        </tr>
+        <tr>
+          <td>Incline DB Curl</td>
+          <td><input type="text" data-key="upperA-biceps-reps" value="2x10"></td>
+          <td><input type="number" data-key="upperA-biceps-kg" value="10"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<!-- Legs -->
- <div class="mobile-room">
+<div class="workout-card">
   <h2>Legs</h2>
- </div>
-<table>
-<thead>
-<tr><th>Exercise</th><th>Sets x Reps</th><th>Weight (kg)</th></tr>
-</thead>
-<tbody>
-<tr><td>Goblet Squat</td><td><input data-key="l-squat-reps" type="text" value="3x10"></td><td><input data-key="l-squat-kg" type="number" value="20"></td></tr>
-<tr><td>Bulgarian Split Squat</td><td><input data-key="l-bulg-reps" type="text" value="2x10"></td><td><input data-key="l-bulg-kg" type="number" value="10"></td></tr>
-<tr><td>DB Romanian Deadlift</td><td><input data-key="l-rdl-reps" type="text" value="3x10"></td><td><input data-key="l-rdl-kg" type="number" value="20"></td></tr>
-<tr><td>DB Hamstring Curl</td><td><input data-key="l-curl-reps" type="text" value="2x10"></td><td><input data-key="l-curl-kg" type="number" value="10"></td></tr>
-<tr><td>Calf Raises</td><td><input data-key="l-calf-reps" type="text" value="2x10"></td><td><input data-key="l-calf-kg" type="number" value="8"></td></tr>
-<tr><td>Negative Weighted Sit-Ups</td><td><input data-key="l-abs-reps" type="text" value="2x10"></td><td><input data-key="l-abs-kg" type="number" value="6"></td></tr>
-</tbody>
-</table>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets x Reps</th>
+          <th>Weight (kg)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Goblet Squat</td>
+          <td><input type="text" data-key="legs-goblet-reps" value="3x10"></td>
+          <td><input type="number" data-key="legs-goblet-kg" value="20"></td>
+        </tr>
+        <tr>
+          <td>Bulgarian Split Squat</td>
+          <td><input type="text" data-key="legs-bulgarian-reps" value="2x10"></td>
+          <td><input type="number" data-key="legs-bulgarian-kg" value="10"></td>
+        </tr>
+        <tr>
+          <td>DB Romanian Deadlift</td>
+          <td><input type="text" data-key="legs-rdl-reps" value="3x10"></td>
+          <td><input type="number" data-key="legs-rdl-kg" value="20"></td>
+        </tr>
+        <tr>
+          <td>DB Hamstring Curl</td>
+          <td><input type="text" data-key="legs-curl-reps" value="2x10"></td>
+          <td><input type="number" data-key="legs-curl-kg" value="10"></td>
+        </tr>
+        <tr>
+          <td>Calf Raises</td>
+          <td><input type="text" data-key="legs-calf-reps" value="2x10"></td>
+          <td><input type="number" data-key="legs-calf-kg" value="8"></td>
+        </tr>
+        <tr>
+          <td>Negative Weighted Sit-Ups</td>
+          <td><input type="text" data-key="legs-abs-reps" value="2x10"></td>
+          <td><input type="number" data-key="legs-abs-kg" value="6"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<!-- Upper B -->
- <div class="mobile-room">
+<div class="workout-card">
   <h2>Upper B</h2>
- </div>
-<table>
-<thead>
-<tr><th>Exercise</th><th>Sets x Reps</th><th>Weight (kg)</th></tr>
-</thead>
-<tbody>
-<tr><td>Incline DB Press</td><td><input data-key="ub-press-reps" type="text" value="3x8"></td><td><input data-key="ub-press-kg" type="number" value="14"></td></tr>
-<tr><td>Chin-Ups</td><td><input data-key="ub-chin-reps" type="text" value="3x8"></td><td><input data-key="ub-chin-kg" type="number" placeholder="body"></td></tr>
-<tr><td>Close Grip Press</td><td><input data-key="ub-cg-reps" type="text" value="3x10"></td><td><input data-key="ub-cg-kg" type="number" value="10"></td></tr>
-<tr><td>Chest-Supported DB Row</td><td><input data-key="ub-row-reps" type="text" value="3x10"></td><td><input data-key="ub-row-kg" type="number" value="12"></td></tr>
-<tr><td>Rear Delt Fly</td><td><input data-key="ub-rear-reps" type="text" value="2x10"></td><td><input data-key="ub-rear-kg" type="number" value="20"></td></tr>
-<tr><td>Skull Crusher</td><td><input data-key="ub-tri-reps" type="text" value="2x10"></td><td><input data-key="ub-tri-kg" type="number" value="10"></td></tr>
-<tr><td>Hammer Curl</td><td><input data-key="ub-bi-reps" type="text" value="2x10"></td><td><input data-key="ub-bi-kg" type="number" value="10"></td></tr>
-</tbody>
-</table>
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>Exercise</th>
+          <th>Sets x Reps</th>
+          <th>Weight (kg)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Incline DB Press (30°)</td>
+          <td><input type="text" data-key="upperB-incline-reps" value="3x8"></td>
+          <td><input type="number" data-key="upperB-incline-kg" value="14"></td>
+        </tr>
+        <tr>
+          <td>Chin-Ups</td>
+          <td><input type="text" data-key="upperB-chin-reps" value="3x8"></td>
+          <td><input type="number" data-key="upperB-chin-kg" placeholder="body"></td>
+        </tr>
+        <tr>
+          <td>Close Grip Press</td>
+          <td><input type="text" data-key="upperB-close-reps" value="3x10"></td>
+          <td><input type="number" data-key="upperB-close-kg" value="10"></td>
+        </tr>
+        <tr>
+          <td>Chest-Supported DB Row</td>
+          <td><input type="text" data-key="upperB-row-reps" value="3x10"></td>
+          <td><input type="number" data-key="upperB-row-kg" value="12"></td>
+        </tr>
+        <tr>
+          <td>Rear Delt Fly</td>
+          <td><input type="text" data-key="upperB-rear-reps" value="2x10"></td>
+          <td><input type="number" data-key="upperB-rear-kg" value="20"></td>
+        </tr>
+        <tr>
+          <td>Skull Crusher (DB)</td>
+          <td><input type="text" data-key="upperB-triceps-reps" value="2x10"></td>
+          <td><input type="number" data-key="upperB-triceps-kg" value="10"></td>
+        </tr>
+        <tr>
+          <td>Hammer DB Curl</td>
+          <td><input type="text" data-key="upperB-biceps-reps" value="2x10"></td>
+          <td><input type="number" data-key="upperB-biceps-kg" value="10"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

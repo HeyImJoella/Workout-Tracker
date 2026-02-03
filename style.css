@@ -4,27 +4,27 @@
 :root {
   color-scheme: light dark;
 
-  /* Light */
-  --bg-page: #f5f5f7;
+  /* Light - higher contrast */
+  --bg-page: #f2f2f4;
   --bg-card: #ffffff;
-  --text-main: #1c1c1e;
-  --text-muted: #6e6e73;
-  --border: #e2e2e6;
-  --row-alt: rgba(0, 0, 0, 0.035);
+  --text-main: #18181b;
+  --text-muted: #5c5c62;
+  --border: #d6d6db;
+  --row-alt: rgba(0, 0, 0, 0.055);
   --input-bg: #ffffff;
-  --shadow: 0 6px 18px rgba(0,0,0,0.06);
+  --shadow: 0 8px 24px rgba(0,0,0,0.07);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-page: #1b1b1f;
-    --bg-card: #24252b;
-    --text-main: #f7f7f7;
-    --text-muted: #a1a1aa;
-    --border: #34343a;
-    --row-alt: rgba(255,255,255,0.045);
-    --input-bg: #2b2c33;
-    --shadow: 0 6px 18px rgba(0,0,0,0.35);
+    --bg-page: #16161a;
+    --bg-card: #1f2026;
+    --text-main: #f2f2f3;
+    --text-muted: #b0b0b8;
+    --border: #2f3036;
+    --row-alt: rgba(255,255,255,0.06);
+    --input-bg: #26272e;
+    --shadow: 0 10px 28px rgba(0,0,0,0.45);
   }
 }
 
@@ -36,7 +36,7 @@ body {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-page);
   color: var(--text-main);
-  line-height: 1.5;
+  line-height: 1.55;
   font-size: 16px;
 }
 
@@ -45,20 +45,22 @@ body {
 ========================= */
 h1 {
   font-size: 2rem;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 64px 0 8px 0;
-  padding: 16px 24px 16px 24px;
+  margin: 0px 0 16px 0;
+  padding: 8px 16px 16px 16px;
   position: sticky;
   top: 0;
   background: var(--bg-card);
   z-index: 5;
   border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(6px);
 }
 
 /* =========================
@@ -67,9 +69,9 @@ h2 {
 .workout-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px;
-  margin: 24px;
+  border-radius: 16px;
+  margin-bottom: 48px;
+  padding: 26px;
   box-shadow: var(--shadow);
 }
 
@@ -81,19 +83,22 @@ table {
   border-collapse: collapse;
   table-layout: fixed;
   font-size: 14px;
+  border: 1px solid var(--border); /* outer table border */
+  border-radius: 12px;             /* rounded corners */
+  overflow: hidden;                /* keep border-radius applied */
 }
 
 th, td {
-  padding: 12px 24px 12px 24px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--border);
 }
 
 th {
   font-weight: 600;
   color: var(--text-muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 td:first-child,
@@ -116,21 +121,36 @@ tbody tr:nth-child(odd) {
    INPUT FIELDS
 ========================= */
 input {
-  width: 56px;
-  padding: 8px;
-  border-radius: 8px;
+  width: 60px;
+  padding: 9px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--input-bg);
   color: var(--text-main);
   font-size: 14px;
   text-align: center;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
+  transition: 
+    border 0.2s ease, 
+    box-shadow 0.2s ease, 
+    transform 0.15s ease, 
+    background 0.2s ease;
+  cursor: text;
 }
 
+/* Hover: slightly lift and highlight border */
+input:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.15);
+  background: var(--input-bg);
+}
+
+/* Focus: clear blue glow */
 input:focus {
   outline: none;
-  border-color: var(--text-muted);
-  box-shadow: 0 0 0 2px rgba(100,100,110,0.15);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+  transform: translateY(-1px);
+  background: var(--input-bg);
 }
 
 /* Remove number input arrows */
@@ -151,12 +171,13 @@ input[type=number] {
   body {
     margin: 16px;
     font-size: 14px;
+    margin: 0px auto;
   }
 
   .workout-card {
     border-radius: 0;
-    margin-bottom: 20px;
-    padding: 16px 16px;
+    margin-bottom: 32px;
+    padding: 18px 14px;
   }
 
   h1 {
@@ -166,7 +187,7 @@ input[type=number] {
 
   h2 {
     font-size: 1.1rem;
-    padding: 16px 6px 16px 6px;
+    padding: 14px 8px;
   }
 
   table {
@@ -174,18 +195,26 @@ input[type=number] {
   }
 
   th, td {
-    padding: 6px;
+    padding: 12px 12px;
   }
 
   input {
-    width: 46px;
+    width: 48px;
     padding: 6px;
     font-size: 13px;
   }
 }
 
+/* Desktop centering */
 @media (min-width: 900px) {
   body {
-    margin: 16px;
+    margin: 32px auto;
+    max-width: 1440px;
   }
+}
+
+input:focus {
+  outline: none;
+  border-color: #3b82f6; /* modern bright blue */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25); /* soft blue glow */
 }
