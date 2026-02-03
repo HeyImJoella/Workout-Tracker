@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Workout Tracker</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>💪</text></svg>">
 </head>
 <body>
 <!-- Upper A -->
@@ -150,5 +151,17 @@
 </table>
 
 <script src="script.js"></script>
+<script>
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Voeg 'dark' of 'light' class toe aan body
+  document.body.classList.add(prefersDark ? 'dark' : 'light');
+
+  // Optioneel: luister naar veranderingen in systeem
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    document.body.classList.remove('dark', 'light');
+    document.body.classList.add(e.matches ? 'dark' : 'light');
+  });
+</script>
 </body>
 </html>

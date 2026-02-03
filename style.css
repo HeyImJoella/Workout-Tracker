@@ -1,24 +1,57 @@
-/* Body styling */
+/*============================
+  THEME VARIABLES
+=============================*/
+:root {
+    /* Light mode */
+    --bg-light: #f5f5f5;
+    --text-light: #222222;
+    --table-bg-light: #ffffff;
+    --border-light: rgba(0,0,0,0.15);
+    --input-border-light: #aaa;
+
+    /* Accent */
+    --accent: #1976D2;
+
+    /* Dark mode */
+    --bg-dark: #121212;                 /* softer than pure black */
+    --text-dark: #E0E0E0;               /* off-white text */
+    --text-secondary-dark: #B0B0B0;
+    --table-bg-dark: #1E1E1E;           /* deep gray background */
+    --border-dark: #444444;
+    --input-bg-dark: #2C2C2C;
+    --input-border-dark: #555;
+}
+
+/*============================
+  BODY & TYPOGRAPHY
+=============================*/
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    font-size: 18px;
     margin: 20px;
     padding: 0;
     transition: background 0.3s, color 0.3s;
 }
 
-/* Header */
 h1 {
-    text-align: left; /* bovenste titel left-aligned */
-    color: #1976D2; /* moderne blauwe accentkleur */
+    text-align: left;
+    font-size: 2.25rem;
+    font-weight: 700;
     margin-bottom: 20px;
+    color: var(--accent);
 }
 
 h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
     margin-top: 30px;
-    color: #1976D2;
+    color: var(--accent);
 }
 
-/* Table styling */
+/*============================
+  TABLE STYLING
+=============================*/
 table {
     width: 100%;
     border-collapse: collapse;
@@ -26,192 +59,125 @@ table {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    table-layout: fixed;       /* fixed column widths */
 }
 
 th, td {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--border-light);
 }
 
-/* Left-align exercise column */
-th:first-child, td:first-child {
+/* First column (Exercise) left-aligned */
+th:first-child,
+td:first-child {
     text-align: left;
-    padding-left: 15px;
+    padding-left: 16px;
 }
 
-th:first-child, td:first-child { text-align: left; }
-th:nth-child(2), td:nth-child(2) { text-align: center; }
-
-/* Center-align other columns */
-td:nth-child(n+2), th:nth-child(n+1) {
+/* Other columns centered */
+th:nth-child(n+2),
+td:nth-child(n+2) {
     text-align: center;
 }
 
-/* Inputs */
+/* Alternate row shading */
+tbody tr:nth-child(odd) td {
+    background: rgba(25, 118, 210, 0.03);
+}
+
+/*============================
+  INPUT STYLING
+=============================*/
 input[type="text"],
 input[type="number"] {
     width: 70px;
-    padding: 10px 8px;
+    padding: 10px 12px;
     font-size: 16px;
     text-align: center;
     border-radius: 6px;
-    border: 1px solid #aaa;
+    border: 1px solid var(--input-border-light);
     transition: border-color 0.3s, background 0.3s, color 0.3s;
-    -moz-appearance: textfield; /* Firefox: remove arrows */
+    -moz-appearance: textfield; /* Firefox remove arrows */
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none; /* Chrome/Safari: remove arrows */
+    -webkit-appearance: none;    /* Chrome/Safari remove arrows */
     margin: 0;
 }
 
 input[type="number"]:focus,
 input[type="text"]:focus {
     outline: none;
-    border-color: #1976D2; /* accentkleur bij focus */
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
 }
 
-/* Light Mode */
+/* Placeholder color */
+input::placeholder {
+    color: #aaa;
+}
+
+/*============================
+  LIGHT MODE
+=============================*/
 body.light {
-    background: #f5f5f5;
-    color: #222;
+    background: var(--bg-light);
+    color: var(--text-light);
 }
 
 body.light table {
-    background: #fff;
+    background: var(--table-bg-light);
 }
 
 body.light th {
-    background: #1976D2;
+    background: var(--accent);
     color: white;
 }
 
 body.light td {
-    background: #fff;
+    background: var(--table-bg-light);
+    color: var(--text-light);
 }
 
 body.light input[type="number"],
 body.light input[type="text"] {
-    background: #fff;
-    color: #222;
-    border: 1px solid #aaa;
+    background: var(--table-bg-light);
+    color: var(--text-light);
+    border: 1px solid var(--input-border-light);
 }
 
-/* Dark Mode */
+/*============================
+  DARK MODE
+=============================*/
 body.dark {
-    background: #1e1e1e;
-    color: #ddd;
+    background: var(--bg-dark);
+    color: var(--text-dark);
 }
 
 body.dark table {
-    background: #2c2c2c;
+    background: var(--table-bg-dark);
 }
 
 body.dark th {
-    background: #1976D2;
+    background: var(--accent);
     color: #fff;
 }
 
 body.dark td {
-    background: #2c2c2c;
+    background: var(--table-bg-dark);
+    color: var(--text-dark);
+    border-bottom: 1px solid var(--border-dark);
 }
 
 body.dark input[type="number"],
 body.dark input[type="text"] {
-    background: #3a3a3a;
-    color: #ddd;
-    border: 1px solid #555;
+    background: var(--input-bg-dark);
+    color: var(--text-dark);
+    border: 1px solid var(--input-border-dark);
 }
 
-table { table-layout: fixed; width: 100%; }
-
-/* Body & typography */
-body {
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-  font-size: 18px;
-  margin: 0;
-  padding: 30px;
-}
-
-/* Titles */
-h1, h2 {
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-h1 {
-  font-size: 2.25rem;
-  text-align: left;
-  color: #1976D2;
-}
-
-h2 {
-  font-size: 1.75rem;
-  color: #1976D2;
-}
-
-/* Spacing between sections */
-section {
-  margin-top: 40px;
-}
-
-/* Tables */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 24px;
-  background: transparent;
-}
-
-/* Table headers */
-th {
-  font-size: 1.1rem;
-  font-weight: 600;
-  padding: 12px 8px;
-  background: #1976D2;
-  color: white;
-  text-align: left;
-}
-
-/* Cells */
-td {
-  padding: 14px 8px;
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
-
-/* Left align first column */
-td:first-child {
-  text-align: left;
-}
-
-/* Consistent spacing for input fields */
-input[type="text"],
-input[type="number"] {
-  font-size: 1rem;
-  padding: 8px 12px;
-  margin: 2px 0;
-}
-
-/* Subtle shading for strips */
-tbody tr:nth-child(odd) td {
-  background: rgba(25, 118, 210, 0.03);
-}
-
-/* Spacing adjustments */
-td:not(:first-child) {
-  text-align: center;
-}
-
-/* Remove input spin arrows */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-}
-
-/* Focus state */
-input:focus {
-  border-color: #1976D2;
-  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
+/* Secondary text in dark mode (placeholder, labels) */
+body.dark input::placeholder {
+    color: var(--text-secondary-dark);
 }

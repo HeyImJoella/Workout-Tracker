@@ -33,3 +33,16 @@ function checkRepsAndIncreaseKg(inputKg, inputReps) {
         alert(`Nice! ${inputKg.dataset.key} weight increased to ${inputKg.value}kg`);
     }
 }
+
+<script>
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // Voeg 'dark' of 'light' class toe aan body
+  document.body.classList.add(prefersDark ? 'dark' : 'light');
+
+  // Optioneel: luister naar veranderingen in systeem
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    document.body.classList.remove('dark', 'light');
+    document.body.classList.add(e.matches ? 'dark' : 'light');
+  });
+</script>
