@@ -10,7 +10,7 @@
   --text-main: #18181b;
   --text-muted: #5c5c62;
   --border: #d6d6db;
-  --row-alt: rgba(0, 0, 0, 0.055);
+  --row-alt: rgba(0, 0, 0, 0.04);
   --input-bg: #ffffff;
   --shadow: 0 8px 24px rgba(0,0,0,0.07);
 }
@@ -22,7 +22,7 @@
     --text-main: #f2f2f3;
     --text-muted: #b0b0b8;
     --border: #2f3036;
-    --row-alt: rgba(255,255,255,0.06);
+    --row-alt: rgba(255,255,255,0.05);
     --input-bg: #26272e;
     --shadow: 0 10px 28px rgba(0,0,0,0.45);
   }
@@ -187,6 +187,7 @@ input[type=number] {
   h2 {
     font-size: 1.1rem;
     padding: 14px 8px;
+      margin: 0 0 0 0;
   }
 
   table {
