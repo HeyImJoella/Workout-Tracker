@@ -39,6 +39,9 @@ th:first-child, td:first-child {
     padding-left: 15px;
 }
 
+th:first-child, td:first-child { text-align: left; }
+th:nth-child(2), td:nth-child(2) { text-align: center; }
+
 /* Center-align other columns */
 td:nth-child(n+2), th:nth-child(n+1) {
     text-align: center;
@@ -119,4 +122,96 @@ body.dark input[type="text"] {
     background: #3a3a3a;
     color: #ddd;
     border: 1px solid #555;
+}
+
+table { table-layout: fixed; width: 100%; }
+
+/* Body & typography */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  margin: 0;
+  padding: 30px;
+}
+
+/* Titles */
+h1, h2 {
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 2.25rem;
+  text-align: left;
+  color: #1976D2;
+}
+
+h2 {
+  font-size: 1.75rem;
+  color: #1976D2;
+}
+
+/* Spacing between sections */
+section {
+  margin-top: 40px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 24px;
+  background: transparent;
+}
+
+/* Table headers */
+th {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 12px 8px;
+  background: #1976D2;
+  color: white;
+  text-align: left;
+}
+
+/* Cells */
+td {
+  padding: 14px 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Left align first column */
+td:first-child {
+  text-align: left;
+}
+
+/* Consistent spacing for input fields */
+input[type="text"],
+input[type="number"] {
+  font-size: 1rem;
+  padding: 8px 12px;
+  margin: 2px 0;
+}
+
+/* Subtle shading for strips */
+tbody tr:nth-child(odd) td {
+  background: rgba(25, 118, 210, 0.03);
+}
+
+/* Spacing adjustments */
+td:not(:first-child) {
+  text-align: center;
+}
+
+/* Remove input spin arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Focus state */
+input:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.15);
 }
