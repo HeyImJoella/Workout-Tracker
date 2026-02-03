@@ -1,0 +1,122 @@
+/* Body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    padding: 0;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Header */
+h1 {
+    text-align: left; /* bovenste titel left-aligned */
+    color: #1976D2; /* moderne blauwe accentkleur */
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-top: 30px;
+    color: #1976D2;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Left-align exercise column */
+th:first-child, td:first-child {
+    text-align: left;
+    padding-left: 15px;
+}
+
+/* Center-align other columns */
+td:nth-child(n+2), th:nth-child(n+1) {
+    text-align: center;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"] {
+    width: 70px;
+    padding: 10px 8px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    transition: border-color 0.3s, background 0.3s, color 0.3s;
+    -moz-appearance: textfield; /* Firefox: remove arrows */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Chrome/Safari: remove arrows */
+    margin: 0;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #1976D2; /* accentkleur bij focus */
+}
+
+/* Light Mode */
+body.light {
+    background: #f5f5f5;
+    color: #222;
+}
+
+body.light table {
+    background: #fff;
+}
+
+body.light th {
+    background: #1976D2;
+    color: white;
+}
+
+body.light td {
+    background: #fff;
+}
+
+body.light input[type="number"],
+body.light input[type="text"] {
+    background: #fff;
+    color: #222;
+    border: 1px solid #aaa;
+}
+
+/* Dark Mode */
+body.dark {
+    background: #1e1e1e;
+    color: #ddd;
+}
+
+body.dark table {
+    background: #2c2c2c;
+}
+
+body.dark th {
+    background: #1976D2;
+    color: #fff;
+}
+
+body.dark td {
+    background: #2c2c2c;
+}
+
+body.dark input[type="number"],
+body.dark input[type="text"] {
+    background: #3a3a3a;
+    color: #ddd;
+    border: 1px solid #555;
+}

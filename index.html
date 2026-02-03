@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Workout Tracker (U-L-U)</h1>
+
+<!-- Upper A -->
+<h2>Upper A</h2>
+<table id="upperA">
+  <thead>
+    <tr>
+      <th>Exercise</th>
+      <th>Sets x Reps</th>
+      <th>Weight (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DB Bench Press</td>
+      <td><input type="text" value="3x8"></td>
+      <td><input type="number" data-key="upperA-dbbench" value="14"></td>
+    </tr>
+    <tr>
+      <td>Pull-Ups</td>
+      <td><input type="text" value="3x8"></td>
+      <td><input type="number" data-key="upperA-pullups" placeholder="body"></td>
+    </tr>
+    <tr>
+      <td>Chest-Supported DB Row (30°)</td>
+      <td><input type="text" value="3x10"></td>
+      <td><input type="number" data-key="upperA-row" value="12"></td>
+    </tr>
+    <tr>
+      <td>Incline DB Fly (15–30°)</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="upperA-fly" value="10"></td>
+    </tr>
+    <tr>
+      <td>Lateral Raises</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="upperA-lateral" value="8"></td>
+    </tr>
+    <tr>
+      <td>Single DB Overhead Extension</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="upperA-triceps" value="10"></td>
+    </tr>
+    <tr>
+      <td>Incline DB Curl</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="upperA-biceps" value="10"></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Legs -->
+<h2>Legs</h2>
+<table id="legs">
+  <thead>
+    <tr>
+      <th>Exercise</th>
+      <th>Sets x Reps</th>
+      <th>Weight (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Goblet Squat</td>
+      <td><input type="text" value="3x10"></td>
+      <td><input type="number" data-key="legs-goblet" value="20"></td>
+    </tr>
+    <tr>
+      <td>Bulgarian Split Squat</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="legs-bulgarian" value="10"></td>
+    </tr>
+    <tr>
+      <td>DB Romanian Deadlift</td>
+      <td><input type="text" value="3x10"></td>
+      <td><input type="number" data-key="legs-rdl" value="20"></td>
+    </tr>
+    <tr>
+      <td>DB Hamstring Curl</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="legs-curl" value="10"></td>
+    </tr>
+    <tr>
+      <td>Calf Raises</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="legs-calf" value="8"></td>
+    </tr>
+    <tr>
+      <td>Negative Weighted Sit-Ups</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="legs-abs" value="6"></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Upper B -->
+<h2>Upper B</h2>
+<table id="upperB">
+  <thead>
+    <tr>
+      <th>Exercise</th>
+      <th>Sets x Reps</th>
+      <th>Weight (kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Incline DB Press (30°)</td>
+      <td><input type="text" value="3x8"></td>
+      <td><input type="number" data-key="upperB-incline" value="14"></td>
+    </tr>
+    <tr>
+      <td>Chin-Ups</td>
+      <td><input type="text" value="3x8"></td>
+      <td><input type="number" data-key="upperB-chinups" placeholder="body"></td>
+    </tr>
+    <tr>
+      <td>Close Grip Press</td>
+      <td><input type="text" value="3x10"></td>
+      <td><input type="number" data-key="upperB-close" value="10"></td>
+    </tr>
+    <tr>
+      <td>Chest-Supported DB Row</td>
+      <td><input type="text" value="3x10"></td>
+      <td><input type="number" data-key="upperB-row" value="12"></td>
+    </tr>
+    <tr>
+      <td>Rear Delt Fly</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="upperB-rear" value="20"></td>
+    </tr>
+    <tr>
+      <td>Skull Crusher (DB)</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="upperB-triceps" value="10"></td>
+    </tr>
+    <tr>
+      <td>Hammer DB Curl</td>
+      <td><input type="text" value="2x10"></td>
+      <td><input type="number" data-key="upperB-biceps" value="10"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script src="script.js"></script>
+</body>
+</html>
