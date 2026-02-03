@@ -176,7 +176,7 @@ input[type=number] {
   .workout-card {
     border-radius: 0;
     margin-bottom: 32px;
-    padding: 18px 14px;
+    padding: 8px 0 16px 0;
   }
 
   h1 {
@@ -198,9 +198,9 @@ input[type=number] {
   }
 
   input {
+    font-size: 16px; /* voorkomt automatische zoom */
     width: 48px;
     padding: 6px;
-    font-size: 13px;
   }
 }
 
