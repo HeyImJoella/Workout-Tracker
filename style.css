@@ -50,7 +50,7 @@ h2 {
   font-weight: 600;
   margin: 0px 0 16px 0;
   border-radius:16px 16px 0 0;
-  padding: 8px 16px 16px 16px;
+  padding: 24px 16px 16px 16px;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(6px);
@@ -63,6 +63,11 @@ h2 {
   margin-bottom: 72px;
   padding: 26px;
   box-shadow: var(--shadow);
+}
+
+/* Boven-padding alleen voor workout-cards weghalen (history-card behoudt padding) */
+.workout-card {
+  padding-top: 0;
 }
 
 /* =========================
@@ -111,11 +116,21 @@ input {
   cursor: pointer;
 }
 
+#h2-progression {
+  padding: 24px 0 16px 0;
+}
+
 /* =========================
    FILTERS & DROPDOWNS (CORRECTE VOLGORDE)
 ========================= */
 .filter-group { display: flex; flex-direction: column; gap: 4px; }
-.filter-group label { font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; }
+.filter-group label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  display: none; /* labels verbergen: Oefening / Maand / Jaar */
+}
 
 .filter-dashboard {
   display: grid;
@@ -123,8 +138,26 @@ input {
   gap: 12px;
   margin-bottom: 20px;
   align-items: flex-end;
+  width: 100%;        /* vul de volledige card-breedte */
 }
 
+/* =========================
+   HISTORY ENTRIES
+========================= */
+#history-content {
+  display: grid;
+  gap: 40px; /* extra verticale witruimte tussen sessies */
+  margin-top: 12px;
+}
+
+.history-entry {
+  /* onzichtbare wrapper: geen “card” styling */
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
 /* De algemene stijl voor select en btn */
 .filter-dashboard select, .modern-btn {
   height: 40px;
@@ -179,6 +212,21 @@ input {
 .cancel-btn { background: var(--row-alt); color: var(--text-main); }
 .confirm-btn { background: #ef4444; color: white; }
 
+
+.delete-button-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px dashed var(--border);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
 /* =========================
    MOBILE OPTIMIZATION
 ========================= */
@@ -187,26 +235,30 @@ input {
 
   .workout-card { 
     margin: 48px 10px 96px 10px; 
-    padding: 12px 0 16px 0; 
+    padding: 0 0 16px 0;  /* geen top-padding op mobiel */
+  }
+
+  #h2-progression {
+    padding: 8px 8px 16px 8px;
   }
 
   .history-card {
     margin: 48px 10px 96px 10px;
-    padding: 16px; 
+    padding: 12px 0 16px 0;  /* zelfde horizontale padding als .workout-card */
   }
 
   h1 { font-size: 1.6rem; margin: 16px 12px; }
 
   .workout-card h2 { 
     font-size: 1.3rem; 
-    padding: 14px 8px; 
+    padding: 16px 8px 12px 8px; 
     margin: 0 0 0 0; 
   }
 
   .history-card h2 {
     font-size: 1.3rem;
-    padding: 14px 16px;
-    margin: -16px -16px 16px -16px;
+    padding: 14px 8px;
+    margin: 0;
   }
 
   table { font-size: 14px; }
@@ -215,5 +267,21 @@ input {
   .desktop-only { display: none; }
 
   .filter-group label { display: none; }
-  .filter-dashboard { grid-template-columns: 1fr; gap: 10px; }
+  .filter-dashboard {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: calc(100% - 16px);    /* 8px links + 8px rechts */
+    margin: 24px 8px 24px 8px;   /* 8px left/right zoals gevraagd */
+    padding: 0;                /* geen extra padding die kan doen “zweven” */
+  }
+
+  #history-content { gap: 20px; }
+  .history-entry { padding: 16px 8px 16px 8px; }
+
+  /* Knoppen iets smaller maken zodat ze lucht aan zijkanten hebben,
+     maar wel duidelijk binnen de card blijven */
+  .log-button {
+    width: calc(100% - 24px);
+    margin: 16px 12px 0 12px; /* extra verticale ruimte boven de knop */
+  }
 }
