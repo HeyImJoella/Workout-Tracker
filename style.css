@@ -30,9 +30,10 @@
    BASE LAYOUT
 ========================= */
 body {
-  margin: 0 auto; /* Centers the body */
-  max-width: 1680px; /* Your requested desktop limit */
-  padding: 0px; /* Keeps breathing room at the edges */
+  margin: 0 auto;
+  max-width: 1680px;
+  /* padding: BOVEN RECHTS ONDER LINKS */
+  padding: 48px 20px 0 20px; 
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-page);
   color: var(--text-main);
@@ -279,7 +280,12 @@ input[type=number] {
    MOBILE OPTIMIZATION
 ========================= */
 @media (max-width: 480px) {
-  body { font-size: 14px; margin: 0px auto; }
+  body { 
+    font-size: 14px; 
+    /* We houden hier de 48px aan de bovenkant aan */
+    padding: 0px 10px 0 10px; 
+    margin: 0 auto; 
+  }
 
   .workout-card { 
     margin: 48px 10px 96px 10px; 
