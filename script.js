@@ -198,7 +198,7 @@ function renderHistory() {
                             <span style="width: 30px; opacity: 0.6; margin-right: 10px;">${ex.reps}</span>
                             
                             <span style="width: 48px; text-align: right;">
-                                <strong style="font-size: 0.95rem;">${ex.weight}</strong>
+                                <strong style="font-size: 1rem;">${ex.weight}</strong>
                                 <span style="font-size: 0.8rem; opacity: 0.8; margin-left: -1px;">kg</span>
                             </span>
                         </div>
