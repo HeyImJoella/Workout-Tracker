@@ -282,7 +282,7 @@ input[type=number] {
   .filter-dashboard {
     grid-template-columns: 1fr;
     gap: 10px;
-    width: calc(100% - 16px);    /* 8px links + 8px rechts */
+    width: calc(100% - 24px);    /* 8px links + 8px rechts */
     margin: 24px 12px 24px 12px;   /* 8px left/right zoals gevraagd */
     padding: 0;                /* geen extra padding die kan doen “zweven” */
   }
