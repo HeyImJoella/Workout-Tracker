@@ -190,11 +190,18 @@ function renderHistory() {
                     const isPR = isPersonalRecord(ex.exercise, ex.weight, history, session.timestamp);
                     return `
                     <div style="display:flex; justify-content:space-between; align-items: center; font-size: 0.9rem;">
-                        <span style="opacity:0.9;">${ex.exercise} ${isPR ? '<span style="color: #ffd700; font-size: 0.75rem; margin-left: 5px;">⭐ PR</span>' : ''}</span>
-                        <span style="font-variant-numeric: tabular-nums;">
-                            <span style="margin-right: 4px; opacity: 0.6;">${ex.reps}x</span>
-                            <strong style="font-size: 1rem;">${ex.weight} kg</strong>
+                        <span style="opacity:0.9; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px;">
+                            ${ex.exercise} ${isPR ? '<span style="color: #ffd700; font-size: 0.75rem; margin-left: 5px;">⭐ PR</span>' : ''}
                         </span>
+                        
+                        <div style="font-variant-numeric: tabular-nums; display: flex; align-items: center; text-align: right;">
+                            <span style="width: 30px; opacity: 0.6; margin-right: 10px;">${ex.reps}</span>
+                            
+                            <span style="width: 48px; text-align: right;">
+                                <strong style="font-size: 0.95rem;">${ex.weight}</strong>
+                                <span style="font-size: 0.8rem; opacity: 0.8; margin-left: -1px;">kg</span>
+                            </span>
+                        </div>
                     </div>`;
                 }).join('')}
             </div>
