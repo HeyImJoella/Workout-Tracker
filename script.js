@@ -212,30 +212,32 @@ function renderHistory() {
 }
 
 // 7. MODAL LOGICA
+// Voor één enkele log
 function deleteSingleLog(timestamp) {
     logToDelete = timestamp;
     
+    const modalTitle = document.querySelector('#deleteModal h3');
     const modalText = document.querySelector('#deleteModal p');
     const confirmBtn = document.querySelector('#deleteModal .confirm-btn');
-    const cancelBtn = document.querySelector('#deleteModal .cancel-btn');
 
-    if (modalText) modalText.innerText = "Wil je deze log verwijderen?";
-    if (confirmBtn) confirmBtn.innerText = "Verwijder log";
-    if (cancelBtn) cancelBtn.innerText = "Annuleren";
+    if (modalTitle) modalTitle.innerText = "Log verwijderen";
+    if (modalText) modalText.innerText = "Wil je deze specifieke training verwijderen?";
+    if (confirmBtn) confirmBtn.innerText = "Wissen";
 
     openDeleteModal();
 }
 
+// Voor alle logs tegelijk
 function setupClearAll() {
     logToDelete = 'all';
     
+    const modalTitle = document.querySelector('#deleteModal h3');
     const modalText = document.querySelector('#deleteModal p');
     const confirmBtn = document.querySelector('#deleteModal .confirm-btn');
-    const cancelBtn = document.querySelector('#deleteModal .cancel-btn');
 
-    if (modalText) modalText.innerText = "Wil je deze volledige log historie verwijderen?";
-    if (confirmBtn) confirmBtn.innerText = "Verwijder volledige historie";
-    if (cancelBtn) cancelBtn.innerText = "Annuleren";
+    if (modalTitle) modalTitle.innerText = "Alle logs wissen";
+    if (modalText) modalText.innerText = "Alle training worden definitief gewist.";
+    if (confirmBtn) confirmBtn.innerText = "Wissen";
 
     openDeleteModal();
 }
@@ -251,14 +253,17 @@ function closeDeleteModal() {
 
 function confirmDeletion() {
     let history = JSON.parse(localStorage.getItem('workout_history')) || [];
+    
     if (logToDelete === 'all') {
         localStorage.removeItem('workout_history');
-        location.reload();
+        location.reload(); // Herlaad alles voor een schone lei
     } else if (logToDelete !== null) {
+        // Filter de specifieke log eruit
         history = history.filter(session => session.timestamp !== logToDelete);
         localStorage.setItem('workout_history', JSON.stringify(history));
-        closeDeleteModal();
-        renderHistory();
+        
+        closeDeleteModal(); // Sluit de modal
+        renderHistory();    // Update de lijst op je scherm
     }
 }
 

@@ -263,17 +263,30 @@ input[type=number] {
 
 
 .delete-button-container {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-top: 1px dashed var(--border);
-  align-items: center;
-  justify-content: center;
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 1px dashed var(--border); /* Subtiele scheidingslijn */
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  justify-content: center;
+  background: transparent; /* Geen achtergrondkleur */
+}
+
+.delete-button-container button {
+  background: none !important;
+  border: none !important;
+  color: var(--text-muted) !important;
+  font-size: 13px;
+  cursor: pointer;
+  opacity: 0.5; /* Iets lichter voor die minimalistische look */
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.delete-button-container button:hover {
+  opacity: 1; /* Wordt pas duidelijk zichtbaar bij hover */
+  color: #ef4444 !important; /* Kleurt heel subtiel rood bij hover */
 }
 
 /* =========================

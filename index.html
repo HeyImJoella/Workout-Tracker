@@ -143,9 +143,9 @@
 </div>
 
 <div class="delete-button-container" style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border);">
-    <button onclick="openDeleteModal()" style="background: none; border: none; color: #777c86; font-size: 13px; cursor: pointer; opacity: 0.7;">
-        🗑️ Wis alle historie
-    </button>
+    <button onclick="setupClearAll()" style="...">
+    🗑️ Wis alle historie
+  </button>
 </div>
 
 <div id="deleteModal" class="modal-overlay" style="display: none;">
@@ -154,7 +154,7 @@
         <p>Weet je het zeker? Al je opgeslagen trainingen worden definitief verwijderd. Dit kan niet ongedaan worden gemaakt.</p>
         <div class="modal-buttons">
             <button onclick="closeDeleteModal()" class="cancel-btn">Annuleren</button>
-            <button onclick="clearAllHistory()" class="confirm-btn">Ja, wis alles</button>
+            <button onclick="confirmDeletion()" class="confirm-btn">Verwijder</button>
         </div>
     </div>
 </div>
