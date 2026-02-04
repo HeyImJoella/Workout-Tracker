@@ -102,11 +102,13 @@ function logWorkoutSesssie(button) {
 
     // Visuele feedback op knop
     const originalText = button.innerText;
-    button.innerText = "Opgeslagen! ✅";
-    button.style.backgroundColor = "#10b981";
+    button.innerText = "Opgeslagen!";
+    button.style.backgroundColor = "#008558";
     setTimeout(() => {
         button.innerText = originalText;
         button.style.backgroundColor = "";
+        button.style.color = "";
+        button.style.border = "";
     }, 1000);
 
     renderHistory();
