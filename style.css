@@ -86,7 +86,7 @@ table {
 th, td { padding: 8px 16px; }
 th { font-weight: 600; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
 td:first-child, th:first-child { text-align: left; width: 50%; }
-td:not(:first-child), th:not(:first-child) { text-align: center; width: 25%; }
+td:not(:first-child), th:not(:first-child) { text-align: left; width: 25%; }
 tbody tr:nth-child(odd) { background: var(--row-alt); }
 
 /* =========================
