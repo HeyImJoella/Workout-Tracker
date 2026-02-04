@@ -181,8 +181,8 @@ function renderHistory() {
                         <div style="display:flex; justify-content:space-between; align-items: center;">
                             <span style="opacity:0.9;">${ex.exercise} ${isPR ? '⭐' : ''}</span>
                             <span>
+                                <span style="margin-right: 4px;">${ex.reps}</span>
                                 <strong>${ex.weight} kg</strong>
-                                <small>(${ex.reps})</small>
                             </span>
                         </div>`;
                     }).join('')}
