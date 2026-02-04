@@ -148,7 +148,7 @@ input[type=number] {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 32px;
   align-items: flex-end;
   width: 100%;        /* vul de volledige card-breedte */
 }
@@ -281,7 +281,7 @@ input[type=number] {
   .filter-group label { display: none; }
   .filter-dashboard {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
     width: calc(100% - 24px);    /* 8px links + 8px rechts */
     margin: 24px 12px 24px 12px;   /* 8px left/right zoals gevraagd */
     padding: 0;                /* geen extra padding die kan doen “zweven” */
