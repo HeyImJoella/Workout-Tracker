@@ -159,11 +159,15 @@ function renderHistory() {
 
         if (relevantExercises.length === 0) return '';
 
-        // Formatteer Datum en Tijd
+        // 1. Formatteer de datum (bijv. Tue 4 Feb)
         const d = new Date(session.timestamp);
-        const displayDate = d.toLocaleDateString('nl-NL', { weekday: 'long', day: 'numeric', month: 'short' });
-        const displayTime = d.toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' });
+        const displayDate = d.toLocaleDateString('en-GB', { 
+            weekday: 'short', 
+            day: 'numeric', 
+            month: 'short' 
+        });
 
+        // 2. De return statement van de map functie (vervangen vanaf de span met displayDate)
         return `
         <div class="history-entry" style="background: rgba(255,255,255,0.03); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
             <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 12px; gap: 10px;">
@@ -171,10 +175,8 @@ function renderHistory() {
                     ${session.workoutName}
                 </span>
                 
-                <div style="background: rgba(255,255,255,0.07); padding: 4px 10px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">
+                <div style="background: rgba(255,255,255,0.07); padding: 4px 10px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">
                     <span style="text-transform: capitalize;">${displayDate}</span>
-                    <span style="opacity: 0.4;">•</span>
-                    <span>${displayTime}</span>
                 </div>
                 
                 <button onclick="deleteSingleLog(${session.timestamp})" 

@@ -315,9 +315,25 @@ input[type=number] {
     margin: 0;
   }
 
-  table { font-size: 14px; }
-  th, td { padding: 8px 12px; }
-  input { font-size: 14px; width: 48px; }
+  
+
+table { 
+    font-size: 14px; 
+    width: 100%;
+    margin: 16px 0 12px 0; /* Verwijder eventuele margins */
+  }
+
+  th, td { 
+    padding: 8px 12px; /* Iets minder padding binnen de cellen zodat tekst niet propt */
+  }
+
+  input { 
+    font-size: 14px; 
+    width: 100%;      /* Laat input de cel vullen */
+    max-width: 55px;  /* Maar nooit breder dan dit */
+    padding: 8px 4px; 
+    box-sizing: border-box; /* Cruciaal: padding telt niet op bij de breedte */
+  }
   .desktop-only { display: none; }
 
   .filter-group label { display: none; }
@@ -340,7 +356,7 @@ input[type=number] {
     position: relative;
 }
 
-  #history-content { gap: 20px; }
+  #history-content { gap: 16px; }
   .history-entry { padding: 16px 12px 16px 12px; }
 
   /* Knoppen iets smaller maken zodat ze lucht aan zijkanten hebben,
