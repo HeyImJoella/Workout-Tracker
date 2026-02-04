@@ -169,7 +169,7 @@ function renderHistory() {
 
         // 2. De return statement van de map functie (vervangen vanaf de span met displayDate)
         return `
-        <div class="history-entry" style="background: rgba(255,255,255,0.03); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
+        <div class="history-entry" style="background: rgba(255,255,255,0.02); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
             <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 12px; gap: 10px;">
                 <span style="font-weight: 700; font-size: 1.05rem; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                     ${session.workoutName}

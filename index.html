@@ -142,24 +142,24 @@
   <div id="history-content"></div>
 </div>
 
-<div class="delete-button-container" style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed var(--border);">
-    <button onclick="setupClearAll()" style="...">
-    🗑️ Wis alle historie
-  </button>
+<div class="delete-button-container">
+    <button onclick="setupClearAll()">
+        🗑️ Wis alle historie
+    </button>
 </div>
 
 <div id="deleteModal" class="modal-overlay" style="display: none;">
     <div class="modal-content">
-        <h3>Historie wissen?</h3>
-        <p>Weet je het zeker? Al je opgeslagen trainingen worden definitief verwijderd. Dit kan niet ongedaan worden gemaakt.</p>
+        <h3>Bevestigen</h3>
+        <p>Weet je het zeker?</p>
+        
         <div class="modal-buttons">
             <button onclick="closeDeleteModal()" class="cancel-btn">Annuleren</button>
-            <button onclick="confirmDeletion()" class="confirm-btn">Verwijder</button>
+            <button onclick="confirmDeletion()" class="confirm-btn">Wissen</button>
         </div>
     </div>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
