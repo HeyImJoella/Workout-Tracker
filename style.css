@@ -30,12 +30,20 @@
    BASE LAYOUT
 ========================= */
 body {
-  margin: 24px;
+  margin: 0 auto; /* Centers the body */
+  max-width: 1680px; /* Your requested desktop limit */
+  padding: 24px; /* Keeps breathing room at the edges */
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-page);
   color: var(--text-main);
   line-height: 1.55;
   font-size: 16px;
+  min-height: 100vh;
+}
+
+/* Ensure the background color still covers the whole screen if the screen is > 1720px */
+html {
+  background: var(--bg-page);
 }
 
 h1 {
