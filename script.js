@@ -38,6 +38,7 @@ function setupStrengthLevelLinks() {
         "Bench Press": "https://strengthlevel.com/strength-standards/dumbbell-bench-press/kg",
         "Pull-Ups": "https://strengthlevel.com/strength-standards/pull-ups/kg",
         "Chest Support Row": "https://strengthlevel.com/strength-standards/chest-supported-dumbbell-row/kg",
+        "Dumbbell Pullover": "https://strengthlevel.com/strength-standards/dumbbell-pullover/kg", // Add this line
         "Incline Fly": "https://strengthlevel.com/strength-standards/incline-dumbbell-fly/kg",
         "Lateral Raises": "https://strengthlevel.com/strength-standards/lateral-raise/kg",
         "Overhead Extension": "https://strengthlevel.com/strength-standards/dumbbell-tricep-extension/kg",
