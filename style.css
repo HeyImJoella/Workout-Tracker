@@ -163,7 +163,7 @@ input[type=number] {
 .log-button {
   width: 100%;
   padding: 12px;
-  margin-top: 16px;
+  margin-top: 24px;
   background: #1f6be6;
   color: white;
   border: none;
@@ -435,7 +435,7 @@ table {
      maar wel duidelijk binnen de card blijven */
   .log-button {
     width: calc(100% - 24px);
-    margin: 16px 12px 0 12px; /* extra verticale ruimte boven de knop */
+    margin: 24px 12px 0 12px; /* extra verticale ruimte boven de knop */
   }
 }
 
