@@ -21,7 +21,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-page: #000000;
+    --bg-page: #020202;
     --bg-card: #1c1c1e;
     --bg-history-card: #242426; 
     /* Dark mode tags: iets lichter dan de kaart voor diepte */
