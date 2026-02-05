@@ -169,6 +169,7 @@ input[type=number] {
   border: none;
   border-radius: 10px;
   font-weight: bold;
+  font-size:14px;
   cursor: pointer;
 }
 
@@ -359,26 +360,28 @@ input[type=number] {
   }
 
 /* Update deze sectie */
-.history-card {
-  overflow: hidden; 
-  display: flex;
-  flex-direction: column;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  margin-bottom: 72px;
-  padding: 26px; /* Dit is prima voor desktop */
-  box-shadow: var(--shadow);
-  width: 100%; /* Zorg dat hij nooit breder is dan het scherm */
-}
-
 @media (max-width: 480px) {
-  .history-card {
-    margin: 20px 0; /* Minder marge op mobiel */
-    padding: 16px 0; /* Verwijder horizontale padding zodat content de ruimte heeft */
-    border-radius: 0; /* Optioneel: staat vaak strakker op mobiel */
-    border-left: none;
-    border-right: none;
+.history-card {
+    margin: 48px 10px 96px 10px; 
+    padding: 16px 12px; /* We geven de container weer wat binnenruimte */
+    border-radius: var(--radius);
+    border: 1px solid var(--border) !important;
+    overflow: hidden;
+    width: auto; /* Zorgt dat hij binnen de body-padding blijft */
+  }
+
+  /* De individuele logs binnen de container */
+  .history-entry {
+    background: var(--bg-card);
+    width: 100%;       /* Vul de breedte van de container */
+    margin-left: 0;    /* Reset de marges die ze naar buiten duwden */
+    margin-right: 0;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    position: relative;
+    box-sizing: border-box; /* Cruciaal: zorgt dat padding binnen de 100% valt */
   }
 }
 
@@ -426,20 +429,7 @@ table {
     padding: 0;                /* geen extra padding die kan doen “zweven” */
   }
 
-  .history-entry {
-    background: var(--bg-card);
-    width:auto;
-    margin-left:12px;
-    margin-right:12px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 16px;
-    position: relative;
-}
-
   #history-content { gap: 16px; }
-  .history-entry { padding: 16px 12px 16px 12px; }
 
   /* Knoppen iets smaller maken zodat ze lucht aan zijkanten hebben,
      maar wel duidelijk binnen de card blijven */
@@ -552,33 +542,46 @@ table {
   gap: 8px;
 }
 
+/* Zorg dat de rij nooit breder wordt dan de kaart */
 .exercise-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
+  gap: 8px; /* Ruimte tussen tekst en getallen */
+  width: 100%;
+  overflow: hidden;
 }
 
+/* De naam van de oefening mag inkorten als het moet */
 .exercise-name {
-  opacity: 0.9;
-  flex: 1;
+  flex: 1; /* Pakt alle beschikbare ruimte */
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  padding-right: 10px;
+  text-overflow: ellipsis; /* Zet ... als het echt niet past */
+  min-width: 0; /* Cruciaal voor flexbox om te kunnen krimpen */
 }
 
+/* Maak de PR badge compacter zodat hij minder ruimte vreet */
 .pr-star {
   color: #ffd700;
-  font-size: 0.75rem;
-  margin-left: 5px;
+  font-size: 0.7rem;
+  background: rgba(255, 215, 0, 0.1); /* Subtiel achtergrondje */
+  padding: 2px 4px;
+  border-radius: 4px;
+  margin-left: 4px;
+  font-weight: bold;
+  white-space: nowrap;
 }
 
+/* Fix voor de stats aan de rechterkant */
 .exercise-stats {
-  font-variant-numeric: tabular-nums;
   display: flex;
   align-items: center;
+  flex-shrink: 0; /* Zorgt dat de gewichten NOOIT kleiner worden of wegvliegen */
   text-align: right;
+  min-width: 100px; /* Geeft een vaste plek voor de kg en reps */
+  justify-content: flex-end;
 }
 
 .exercise-reps {
@@ -588,7 +591,7 @@ table {
 }
 
 .exercise-weight {
-  width: 55px;
+  width: 40x;
   text-align: right;
 }
 
@@ -597,7 +600,32 @@ table {
 }
 
 .exercise-weight .unit {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   opacity: 0.8;
   margin-left: -1px;
+}
+
+/* De standaard rij: geen extra padding, zodat tekst links uitlijnt */
+.exercise-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0; /* Alleen verticale ruimte, geen horizontale verschuiving */
+  width: 100%;
+}
+
+/* De PR rij: we gebruiken een negatieve marge en padding die elkaar opheffen */
+.exercise-row.is-pr {
+  background: rgba(255, 212, 0, 0.12); 
+  border-radius: 6px;
+  /* Deze combinatie zorgt dat de kleur uitstekt, maar de tekst blijft staan: */
+  padding: 4px 8px; 
+  margin: 2px -8px; 
+  width: calc(100% + 16px); 
+}
+
+@media (prefers-color-scheme: dark) {
+  .exercise-row.is-pr {
+    background: rgba(255, 212, 0, 0.08);
+  }
 }

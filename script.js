@@ -37,7 +37,7 @@ function setupStrengthLevelLinks() {
     const exerciseLinks = {
         "Bench Press": "https://strengthlevel.com/strength-standards/dumbbell-bench-press/kg",
         "Pull-Ups": "https://strengthlevel.com/strength-standards/pull-ups/kg",
-        "Chest Supported Row": "https://strengthlevel.com/strength-standards/chest-supported-dumbbell-row/kg",
+        "Chest Support Row": "https://strengthlevel.com/strength-standards/chest-supported-dumbbell-row/kg",
         "Incline Fly": "https://strengthlevel.com/strength-standards/incline-dumbbell-fly/kg",
         "Lateral Raises": "https://strengthlevel.com/strength-standards/lateral-raise/kg",
         "Overhead Extension": "https://strengthlevel.com/strength-standards/dumbbell-tricep-extension/kg",
@@ -168,8 +168,6 @@ function renderHistory() {
         });
 
         // 2. De return statement van de map functie (vervangen vanaf de span met displayDate)
-        // VERVANG het return gedeelte in renderHistory() door dit:
-        // VERVANG het return gedeelte in renderHistory() door dit:
         return `
         <div class="history-entry">
             <div class="history-header">
@@ -188,13 +186,12 @@ function renderHistory() {
             
             <div class="history-exercises-list">
                 ${relevantExercises.map(ex => {
+                    // In je renderHistory functie, bij de oefeningen-loop:
                     const isPR = isPersonalRecord(ex.exercise, ex.weight, history, session.timestamp);
+
                     return `
-                    <div class="exercise-row">
-                        <span class="exercise-name">
-                            ${ex.exercise} ${isPR ? '<span class="pr-star">⭐ PR</span>' : ''}
-                        </span>
-                        
+                    <div class="exercise-row ${isPR ? 'is-pr' : ''}">
+                        <span class="exercise-name">${ex.exercise}</span>
                         <div class="exercise-stats">
                             <span class="exercise-reps">${ex.reps}</span>
                             <span class="exercise-weight">
