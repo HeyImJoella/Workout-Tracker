@@ -37,6 +37,10 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 /* =========================
    BASE LAYOUT
 ========================= */
@@ -56,6 +60,8 @@ body {
 /* Ensure the background color still covers the whole screen if the screen is > 1720px */
 html {
   background: var(--bg-page);
+  width:100%;
+  position:relative;
 }
 
 h1 {
@@ -76,7 +82,7 @@ h2 {
   backdrop-filter: blur(6px);
 }
 
-.workout-card, .history-card {
+.workout-card{
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -85,6 +91,18 @@ h2 {
   box-shadow: var(--shadow);
 }
 
+/* Fix voor de geschiedenis container */
+.history-card {
+  overflow: hidden; /* Zorgt dat niets uit de bocht vliegt */
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 72px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+}
 /* Boven-padding alleen voor workout-cards weghalen (history-card behoudt padding) */
 .workout-card {
   padding-top: 0;
@@ -101,6 +119,12 @@ table {
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: hidden;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Voegt scrollbar toe als de tabel te breed is op mobiel */
+  -webkit-overflow-scrolling: touch;
 }
 
 th, td { padding: 8px 16px; }
@@ -177,21 +201,23 @@ input[type=number] {
    HISTORY ENTRIES
 ========================= */
 #history-content {
-  display: grid;
-  gap: 24px; /* extra verticale witruimte tussen sessies */
-  margin-top: 12px;
+  width: 100%;
+  display: flex; /* Flexbox is vaak stabieler dan Grid voor verticale lijsten */
+  flex-direction: column;
+  gap: 16px;
 }
 
 .history-entry {
-  /* onzichtbare wrapper: geen “card” styling */
-  padding: 0;
-  border: none;
-  margin-left:0px;
-  margin-right:0px;
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+  width: 100%; /* Forceer binnen de container */
+  background: var(--row-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  /* Verwijder eventuele negatieve margins als die er staan */
+  margin-left: 0;
+  margin-right: 0;
 }
+
 
 /* Update deze sectie in je CSS */
 .history-entry {
@@ -332,10 +358,29 @@ input[type=number] {
     padding: 8px 12px 16px 12px;
   }
 
+/* Update deze sectie */
+.history-card {
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 72px;
+  padding: 26px; /* Dit is prima voor desktop */
+  box-shadow: var(--shadow);
+  width: 100%; /* Zorg dat hij nooit breder is dan het scherm */
+}
+
+@media (max-width: 480px) {
   .history-card {
-    margin: 48px 10px 96px 10px;
-    padding: 12px 0 16px 0;  /* zelfde horizontale padding als .workout-card */
+    margin: 20px 0; /* Minder marge op mobiel */
+    padding: 16px 0; /* Verwijder horizontale padding zodat content de ruimte heeft */
+    border-radius: 0; /* Optioneel: staat vaak strakker op mobiel */
+    border-left: none;
+    border-right: none;
   }
+}
 
   h1 { font-size: 1.6rem; margin: 16px 12px; }
 
@@ -383,6 +428,7 @@ table {
 
   .history-entry {
     background: var(--bg-card);
+    width:auto;
     margin-left:12px;
     margin-right:12px;
     border: 1px solid var(--border);
@@ -419,22 +465,29 @@ table {
   white-space: nowrap;
 }
 
-/* De PR-badge kan ook profiteren van de tag structuur */
+/* De PR-badge: een bescheiden goud-tintje ipv fel geel */
 .pr-badge {
-  background: var(--bg-tag);
-  color: #b8860b; /* Goud-accent blijft voor herkenbaarheid */
-  padding: 2px 8px;
+  background: transparent;
+  color: #b8860b; 
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  padding: 1px 8px;
   border-radius: 6px;
   font-size: 0.7rem;
-  font-weight: 800;
-  border: 1px solid var(--border);
+  font-weight: 600;
+  margin-left: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
-    .pr-badge {
-        color: #ffd700;
-        border-color: #ffd70044;
-    }
+  .history-date-tag {
+    background: #2c2c2e; /* Iets lichter dan de kaart, maar nog steeds donker */
+    color: #efeff4;
+    border-color: #3a3a3c;
+  }
+  
+  .pr-badge {
+    color: #ffd700;
+    border-color: rgba(255, 215, 0, 0.2);
+  }
 }
 
 /* =========================
@@ -457,17 +510,26 @@ table {
   white-space: nowrap;
 }
 
+/* =========================
+   SUBTIELE TAG STYLING
+========================= */
+
 .history-date-tag {
-  background: var(--row-alt);
-  padding: 4px 10px;
-  border-radius: 15px;
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
+  /* Gebruik een heel zachte achtergrondkleur */
+  background: var(--bg-tag);
+  color: var(--text-main); /* Dezelfde kleur als je hoofdtekst voor rust */
+  
+  padding: 3px 10px;
+  border-radius: 6px;
   font-size: 0.75rem;
-  color: var(--text-muted);
-  white-space: nowrap;
-  text-transform: capitalize;
+  font-weight: 500; /* Medium dikte, niet té zwaar */
+  
+  /* Een subtiele border die net iets donkerder is dan de tag zelf */
+  border: 1px solid var(--border);
+  
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.85; /* Maakt het geheel wat zachter */
 }
 
 .delete-log-btn {
