@@ -3,26 +3,37 @@
 ========================= */
 :root {
   color-scheme: light dark;
-  --bg-page: #f2f2f4;
+  --bg-page: #f2f2f7; 
   --bg-card: #ffffff;
-  --text-main: #18181b;
-  --text-muted: #5c5c62;
-  --border: #a4a4b6;
-  --row-alt: rgba(0, 0, 0, 0.03);
+  --bg-history-card: #fdfdfe; 
+  /* Nieuwe Tag variabelen */
+  --bg-tag: #e5e5ea;         /* Donkerder grijs voor tags */
+  --text-tag: #3a3a3c;       /* Krachtige tekstkleur */
+  --text-main: #1c1c1e;
+  --text-muted: #8e8e93;
+  --accent: #007aff;
+  --border: #d1d1d6;
+  --row-alt: rgba(0, 0, 0, 0.02);
   --input-bg: #ffffff;
-  --shadow: 0 8px 24px rgba(0,0,0,0.07);
+  --shadow: 0 2px 8px rgba(0,0,0,0.04);
+  --radius: 14px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-page: #16161a;
-    --bg-card: #1f2026;
-    --text-main: #f2f2f3;
-    --text-muted: #b0b0b8;
-    --border: #565868;
-    --row-alt: rgba(255,255,255,0.03);
-    --input-bg: #26272e;
-    --shadow: 0 10px 28px rgba(0,0,0,0.45);
+    --bg-page: #000000;
+    --bg-card: #1c1c1e;
+    --bg-history-card: #242426; 
+    /* Dark mode tags: iets lichter dan de kaart voor diepte */
+    --bg-tag: #3a3a3c;         
+    --text-tag: #ffffff;       
+    --text-main: #ffffff;
+    --text-muted: #a1a1a6;
+    --accent: #0a84ff;
+    --border: #38383a;
+    --row-alt: rgba(255, 255, 255, 0.03);
+    --input-bg: #1c1c1e;
+    --shadow: 0 4px 12px rgba(0,0,0,0.3);
   }
 }
 
@@ -167,7 +178,7 @@ input[type=number] {
 ========================= */
 #history-content {
   display: grid;
-  gap: 12px; /* extra verticale witruimte tussen sessies */
+  gap: 24px; /* extra verticale witruimte tussen sessies */
   margin-top: 12px;
 }
 
@@ -181,6 +192,18 @@ input[type=number] {
   background: transparent;
   box-shadow: none;
 }
+
+/* Update deze sectie in je CSS */
+.history-entry {
+  background: var(--row-alt); /* Gebruikt de lichte tint van je thema */
+  border: 1px solid var(--border) !important; /* Forceert de zichtbare border */
+  border-radius: 12px;
+  padding: 16px;ß
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+
+
 /* De algemene stijl voor select en btn */
 .filter-dashboard select, .modern-btn {
   height: 40px;
@@ -382,4 +405,137 @@ table {
 
 .history-entry:hover {
     border-color: var(--text-muted);
+}
+
+/* Implementatie van de tags */
+.history-date {
+  background: var(--bg-tag);
+  color: var(--text-tag);
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700; /* Extra dik voor leesbaarheid */
+  border: 1px solid rgba(0,0,0,0.05);
+  white-space: nowrap;
+}
+
+/* De PR-badge kan ook profiteren van de tag structuur */
+.pr-badge {
+  background: var(--bg-tag);
+  color: #b8860b; /* Goud-accent blijft voor herkenbaarheid */
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  border: 1px solid var(--border);
+}
+
+@media (prefers-color-scheme: dark) {
+    .pr-badge {
+        color: #ffd700;
+        border-color: #ffd70044;
+    }
+}
+
+/* =========================
+   HISTORY GENERATED CONTENT
+========================= */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.history-workout-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.history-date-tag {
+  background: var(--row-alt);
+  padding: 4px 10px;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.delete-log-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 5px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.delete-log-btn:hover {
+  color: #ff4444;
+}
+
+.history-exercises-list {
+  display: grid;
+  gap: 8px;
+}
+
+.exercise-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.exercise-name {
+  opacity: 0.9;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.pr-star {
+  color: #ffd700;
+  font-size: 0.75rem;
+  margin-left: 5px;
+}
+
+.exercise-stats {
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+
+.exercise-reps {
+  width: 35px;
+  opacity: 0.6;
+  margin-right: 10px;
+}
+
+.exercise-weight {
+  width: 55px;
+  text-align: right;
+}
+
+.exercise-weight strong {
+  font-size: 1rem;
+}
+
+.exercise-weight .unit {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-left: -1px;
 }

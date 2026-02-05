@@ -168,46 +168,44 @@ function renderHistory() {
         });
 
         // 2. De return statement van de map functie (vervangen vanaf de span met displayDate)
+        // VERVANG het return gedeelte in renderHistory() door dit:
+        // VERVANG het return gedeelte in renderHistory() door dit:
         return `
-        <div class="history-entry" style="background: rgba(255,255,255,0.02); border-radius: 10px; padding: 15px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05);">
-            <div style="display:flex; justify-content:space-between; align-items: center; margin-bottom: 12px; gap: 10px;">
-                <span style="font-weight: 700; font-size: 1.05rem; flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+        <div class="history-entry">
+            <div class="history-header">
+                <span class="history-workout-title">
                     ${session.workoutName}
                 </span>
                 
-                <div style="background: rgba(255,255,255,0.07); padding: 4px 10px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; font-size: 0.75rem; color: var(--text-muted); white-space: nowrap;">
-                    <span style="text-transform: capitalize;">${displayDate}</span>
+                <div class="history-date-tag">
+                    <span>${displayDate}</span>
                 </div>
                 
-                <button onclick="deleteSingleLog(${session.timestamp})" 
-                        style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; padding: 0 5px; line-height: 1; transition: color 0.2s;"
-                        onmouseover="this.style.color='#ff4444'" 
-                        onmouseout="this.style.color='var(--text-muted)'">
+                <button class="delete-log-btn" onclick="deleteSingleLog(${session.timestamp})">
                     ✕
                 </button>
             </div>
             
-            <div style="display: grid; gap: 8px;">
+            <div class="history-exercises-list">
                 ${relevantExercises.map(ex => {
                     const isPR = isPersonalRecord(ex.exercise, ex.weight, history, session.timestamp);
                     return `
-                    <div style="display:flex; justify-content:space-between; align-items: center; font-size: 0.9rem;">
-                        <span style="opacity:0.9; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 10px;">
-                            ${ex.exercise} ${isPR ? '<span style="color: #ffd700; font-size: 0.75rem; margin-left: 5px;">⭐ PR</span>' : ''}
+                    <div class="exercise-row">
+                        <span class="exercise-name">
+                            ${ex.exercise} ${isPR ? '<span class="pr-star">⭐ PR</span>' : ''}
                         </span>
                         
-                        <div style="font-variant-numeric: tabular-nums; display: flex; align-items: center; text-align: right;">
-                            <span style="width: 30px; opacity: 0.6; margin-right: 10px;">${ex.reps}</span>
-                            
-                            <span style="width: 48px; text-align: right;">
-                                <strong style="font-size: 1rem;">${ex.weight}</strong>
-                                <span style="font-size: 0.8rem; opacity: 0.8; margin-left: -1px;">kg</span>
+                        <div class="exercise-stats">
+                            <span class="exercise-reps">${ex.reps}</span>
+                            <span class="exercise-weight">
+                                <strong>${ex.weight}</strong>
+                                <span class="unit">kg</span>
                             </span>
                         </div>
                     </div>`;
                 }).join('')}
             </div>
-        </div>`;
+</div>`;
     }).join('');
 }
 
